@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Feathers Farm | Healthy Chickens & Quality Poultry</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fresh Feathers Farm</span>
+            </div>
+            <ul class="nav-links">
+<li><a href="index.html" class="active">Home</a></li>
+<li><a href="products.html">Shop Chickens</a></li>
+<li><a href="index.html#categories">Categories</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Healthy Chickens, Quality Poultry</h1>
+            <p>Raise happy, healthy chickens from our trusted farm. We offer quality laying hens, broilers, and pullets at every stage of growth, ready for your backyard or farm.</p>
+            <a href="products.html" class="btn btn-primary">Shop Chickens</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1591076948169-3a734f2562d1?auto=format&fit=crop&w=600&q=80" alt="Healthy chickens on the farm" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534247357892-107253691016?auto=format&fit=crop&w=600&q=80';">
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Chickens</h2>
+            <p class="section-subtitle">Our most popular chickens ready for your farm.</p>
+            <div class="product-grid" id="featured-grid">
+                <!-- Featured products injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Age</h2>
+            <p class="section-subtitle">Choose the right stage for your needs.</p>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🐥</div>
+                    <h3>4-Month-Old Pullets</h3>
+                    <p>Young hens approaching laying age. Perfect for new chicken keepers.</p>
+                    <a href="products.html?category=4-month" class="btn btn-outline">Shop 4-Month-Old</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🐓</div>
+                    <h3>5-Month-Old Layers</h3>
+                    <p>Started pullets ready to begin laying eggs soon.</p>
+                    <a href="products.html?category=5-month" class="btn btn-outline">Shop 5-Month-Old</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🐔</div>
+                    <h3>6-Month-Old & Older</h3>
+                    <p>Mature laying hens in full production.</p>
+                    <a href="products.html?category=6-month" class="btn btn-outline">Shop 6-Month+</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="images/chicken-breed-and-age-guide.png.png" alt="Chicken breed and age guide" loading="lazy">
+            </div>
+            <div class="about-content">
+                <h2>About Our Farm</h2>
+                <p>Fresh Feathers Farm is a family-run poultry farm dedicated to raising healthy, happy chickens. We believe in quality care, clean coops, and humane treatment for every bird we raise.</p>
+                <p>Our chickens are fed nutritious feed, given plenty of space to roam, and monitored daily to ensure they arrive at your farm in excellent health.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span>Fresh Feathers Farm</span>
+                <p>Quality poultry you can trust.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@freshfeathersfarm.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Farm Road, Countryside, ST 12345</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p>Sat: 9:00 AM - 3:00 PM</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh Feathers Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

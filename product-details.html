@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Details | Fresh Feathers Farm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fresh Feathers Farm</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop Chickens</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="details-page">
+        <div class="container details-container">
+            <a href="products.html" class="btn btn-outline back-link">&larr; Back to Shop</a>
+
+            <div id="product-not-found" class="not-found" style="display: none;">
+                <div class="not-found-card">
+                    <h2>Chicken Not Found</h2>
+                    <p>We couldn't find a chicken matching that selection.</p>
+                    <a href="products.html" class="btn btn-primary">Back to Shop</a>
+                </div>
+            </div>
+
+            <div id="product-content" class="product-content" style="display: none;">
+                <div class="product-image-col">
+                    <div class="product-detail-image">
+                        <img id="detail-image" src="" alt="">
+                    </div>
+                </div>
+                <div class="product-info-col">
+                    <h1 id="detail-name" class="detail-name"></h1>
+                    <div class="detail-meta">
+                        <span id="detail-breed" class="detail-tag"></span>
+                        <span id="detail-age" class="detail-tag"></span>
+                        <span id="detail-sex" class="detail-tag"></span>
+                    </div>
+                    <p id="detail-description" class="detail-description"></p>
+                    <div class="detail-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Price</span>
+                            <span id="detail-price" class="spec-value"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span id="detail-weight" class="spec-value"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Purpose</span>
+                            <span id="detail-purpose" class="spec-value"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Availability</span>
+                            <span id="detail-availability" class="spec-value availability"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Stock Quantity</span>
+                            <span id="detail-stock" class="spec-value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span>Fresh Feathers Farm</span>
+                <p>Quality poultry you can trust.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@freshfeathersfarm.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Farm Road, Countryside, ST 12345</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p>Sat: 9:00 AM - 3:00 PM</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh Feathers Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/product-details.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
