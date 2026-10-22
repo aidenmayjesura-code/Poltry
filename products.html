@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Chickens | Fresh Feathers Farm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fresh Feathers Farm</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Shop Chickens</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Chickens</h1>
+            <p>Browse our available chickens by age. All prices are listed in Philippine Pesos (₱). Sample data for demonstration.</p>
+        </div>
+    </section>
+
+    <section class="product-list" id="product-list">
+        <div class="container">
+            <div class="filters">
+                <div class="category-filters">
+                    <button type="button" class="category-filter active" data-category="all">All Chickens</button>
+                    <button type="button" class="category-filter" data-category="4-month">4-Month-Old Chickens</button>
+                    <button type="button" class="category-filter" data-category="5-month">5-Month-Old Chickens</button>
+                    <button type="button" class="category-filter" data-category="6-month">6-Month-Old Chickens and Older</button>
+                </div>
+                <div class="search-box">
+                    <label for="search-input">Search by name or breed</label>
+                    <input type="search" id="search-input" placeholder="Search chickens...">
+                </div>
+            </div>
+
+            <p id="result-count" class="result-count"></p>
+
+            <div id="no-results" class="no-results">
+                <p>No chickens found matching your search or category.</p>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Product cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span>Fresh Feathers Farm</span>
+                <p>Quality poultry you can trust.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@freshfeathersfarm.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Farm Road, Countryside, ST 12345</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p>Sat: 9:00 AM - 3:00 PM</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh Feathers Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

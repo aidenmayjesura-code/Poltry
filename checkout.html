@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Fresh Feathers Farm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fresh Feathers Farm</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop Chickens</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="checkout-page">
+        <div class="container checkout-container">
+            <h1>Checkout</h1>
+            <p class="checkout-subtitle">Review your order and complete your purchase.</p>
+
+            <div id="checkout-empty" class="checkout-empty" style="display: none;">
+                <h2>Your cart is empty</h2>
+                <p>Add some chickens before checking out.</p>
+                <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+            </div>
+
+            <div id="checkout-form-section" style="display: none;">
+                <div class="checkout-columns">
+                    <div class="checkout-form-col">
+                        <form id="checkout-form" novalidate>
+                            <div class="form-field">
+                                <label for="checkout-name">Full name <span class="required">*</span></label>
+                                <input type="text" id="checkout-name" required placeholder="e.g. Juan Dela Cruz">
+                                <span class="field-error" id="name-error"></span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="checkout-phone">Contact number <span class="required">*</span></label>
+                                <input type="tel" id="checkout-phone" required placeholder="e.g. 09123456789">
+                                <span class="field-error" id="phone-error"></span>
+                            </div>
+
+                            <div class="form-field full">
+                                <label for="checkout-address">Delivery address <span class="required">*</span></label>
+                                <textarea id="checkout-address" required rows="3" placeholder="e.g. 123 Farm Road, Countryside, ST 12345"></textarea>
+                                <span class="field-error" id="address-error"></span>
+                            </div>
+
+                            <div class="form-field full">
+                                <label for="checkout-notes">Order notes (optional)</label>
+                                <textarea id="checkout-notes" rows="3" placeholder="Any special delivery instructions..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="checkout-back-btn">Back to Cart</button>
+                                <button type="submit" class="btn btn-primary" id="checkout-submit-btn">Place Order</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="checkout-summary-col">
+                        <div class="order-summary-card">
+                            <h2>Order Summary</h2>
+                            <div id="checkout-items" class="checkout-items"></div>
+                            <div class="checkout-total-row">
+                                <span>Total</span>
+                                <span id="checkout-total">₱0.00</span>
+                            </div>
+                            <p class="checkout-disclaimer">
+                                This is a school-project demonstration. No real payments are processed and no card details are collected.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="checkout-confirmation" class="checkout-confirmation" style="display: none;">
+                <div class="confirmation-card">
+                    <h2>Thank you for your order!</h2>
+                    <p>Your demonstration order has been placed successfully.</p>
+                    <div class="order-reference">
+                        <span class="order-reference-label">Order Reference:</span>
+                        <span id="order-reference" class="order-reference-value"></span>
+                    </div>
+                    <div id="confirmation-items" class="confirmation-items"></div>
+                    <div class="checkout-total-row">
+                        <span>Total Paid (Demo)</span>
+                        <span id="confirmation-total">₱0.00</span>
+                    </div>
+                    <p class="confirmation-note">
+                        Please note: this is a school-project demonstration. No real payment was processed and no order is stored on a server.
+                    </p>
+                    <div class="confirmation-actions">
+                        <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                        <a href="index.html" class="btn btn-outline">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span>Fresh Feathers Farm</span>
+                <p>Quality poultry you can trust.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@freshfeathersfarm.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Farm Road, Countryside, ST 12345</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p>Sat: 9:00 AM - 3:00 PM</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh Feathers Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    // ========================================
+    // Fresh Feathers Farm - Checkout Page
+    // ========================================
+
+    const checkoutEmptyEl = document.getElementById("checkout-empty");
+    const checkoutFormSection = document.getElementById("checkout-form-section");
+    const checkoutConfirmationEl = document.getElementById("checkout-confirmation");
+    const checkoutForm = document.getElementById("checkout-form");
+    const checkoutItemsEl = document.getElementById("checkout-items");
+    const checkoutTotalEl = document.getElementById("checkout-total");
+    const confirmationItemsEl = document.getElementById("confirmation-items");
+    const confirmationTotalEl = document.getElementById("confirmation-total");
+    const orderReferenceEl = document.getElementById("order-reference");
+    const checkoutBackBtn = document.getElementById("checkout-back-btn");
+
+    function formatPrice(price) {
+      return new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+      }).format(price);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return "";
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function renderCheckoutSummary() {
+      const cart = getCart();
+
+      if (cart.length === 0) {
+        if (checkoutEmptyEl) checkoutEmptyEl.style.display = "block";
+        if (checkoutFormSection) checkoutFormSection.style.display = "none";
+        if (checkoutTotalEl) checkoutTotalEl.textContent = formatPrice(0);
+        return;
+      }
+
+      if (checkoutEmptyEl) checkoutEmptyEl.style.display = "none";
+      if (checkoutFormSection) checkoutFormSection.style.display = "block";
+
+      checkoutItemsEl.innerHTML = "";
+
+      cart.forEach(function (item) {
+        const subtotal = item.price * item.quantity;
+
+        const itemEl = document.createElement("div");
+        itemEl.className = "checkout-item";
+        itemEl.innerHTML =
+          '<div class="checkout-item-image">' +
+          '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.name) + '" onerror="this.onerror=null;this.src=\'images/imagesrhode-island-red.jpg.png.png\';">' +
+          '</div>' +
+          '<div class="checkout-item-details">' +
+          '<div class="checkout-item-name">' + escapeHtml(item.name) + '</div>' +
+          '<div class="checkout-item-meta">' +
+          '<span>' + item.quantity + ' x ' + formatPrice(item.price) + '</span>' +
+          '<span>Subtotal: ' + formatPrice(subtotal) + '</span>' +
+          '</div>' +
+          '</div>';
+
+        checkoutItemsEl.appendChild(itemEl);
+      });
+
+      checkoutTotalEl.textContent = formatPrice(getCartTotal());
+    }
+
+    function generateOrderReference() {
+      const prefix = "FF";
+      const num = Math.floor(100000 + Math.random() * 900000);
+      const date = new Date();
+      const dateStr = date.getFullYear() +
+        String(date.getMonth() + 1).padStart(2, "0") +
+        String(date.getDate()).padStart(2, "0");
+      return prefix + "-" + dateStr + "-" + num;
+    }
+
+    function showFieldError(fieldId, message) {
+      const errorEl = document.getElementById(fieldId);
+      const inputEl = document.getElementById(fieldId.replace("-error", ""));
+      if (errorEl) errorEl.textContent = message;
+      if (inputEl) inputEl.classList.add("input-error");
+    }
+
+    function clearFieldError(fieldId) {
+      const errorEl = document.getElementById(fieldId);
+      const inputEl = document.getElementById(fieldId.replace("-error", ""));
+      if (errorEl) errorEl.textContent = "";
+      if (inputEl) inputEl.classList.remove("input-error");
+    }
+
+    function clearAllErrors() {
+      ["name-error", "phone-error", "address-error"].forEach(clearFieldError);
+    }
+
+    checkoutForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearAllErrors();
+
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert("Your cart is empty. Add some chickens before checking out.");
+        return;
+      }
+
+      const name = document.getElementById("checkout-name").value.trim();
+      const phone = document.getElementById("checkout-phone").value.trim();
+      const address = document.getElementById("checkout-address").value.trim();
+      const notes = document.getElementById("checkout-notes").value.trim();
+
+      let hasError = false;
+
+      if (!name) {
+        showFieldError("name-error", "Full name is required.");
+        hasError = true;
+      }
+      if (!phone) {
+        showFieldError("phone-error", "Contact number is required.");
+        hasError = true;
+      }
+      if (!address) {
+        showFieldError("address-error", "Delivery address is required.");
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      const orderReference = generateOrderReference();
+
+      confirmationItemsEl.innerHTML = "";
+      cart.forEach(function (item) {
+        const subtotal = item.price * item.quantity;
+
+        const itemEl = document.createElement("div");
+        itemEl.className = "confirmation-item";
+        itemEl.innerHTML =
+          '<span class="confirmation-item-name">' + escapeHtml(item.name) + '</span>' +
+          '<span class="confirmation-item-qty">' + item.quantity + ' x ' + formatPrice(item.price) + ' = ' + formatPrice(subtotal) + '</span>';
+
+        confirmationItemsEl.appendChild(itemEl);
+      });
+
+      orderReferenceEl.textContent = orderReference;
+      confirmationTotalEl.textContent = formatPrice(getCartTotal());
+
+      checkoutFormSection.style.display = "none";
+      checkoutConfirmationEl.style.display = "block";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    checkoutBackBtn.addEventListener("click", function () {
+      window.location.href = "cart.html";
+    });
+
+    document.querySelectorAll("#checkout-name, #checkout-phone, #checkout-address").forEach(function (el) {
+      el.addEventListener("input", function () {
+        clearFieldError(el.id + "-error");
+      });
+    });
+
+    renderCheckoutSummary();
+    </script>
+</body>
+</html>

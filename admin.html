@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Fresh Feathers Farm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fresh Feathers Farm</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop Chickens</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="admin.html" class="active">Admin Dashboard</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="admin-page">
+        <div class="container admin-container">
+            <h1>Poultry Inventory Management</h1>
+            <p class="admin-subtitle">Manage your chicken inventory. Front-end prototype — no authentication or passwords.</p>
+
+            <div id="admin-message" class="admin-message"></div>
+
+            <div class="admin-actions">
+                <button type="button" class="btn btn-outline" id="reset-data-btn">Reset to Sample Data</button>
+            </div>
+
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-total">0</div>
+                    <div class="stat-label">Total Products</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-stock">0</div>
+                    <div class="stat-label">Total Stock</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-available">0</div>
+                    <div class="stat-label">Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-out-of-stock">0</div>
+                    <div class="stat-label">Out of Stock</div>
+                </div>
+            </div>
+
+            <div class="admin-form-section" id="add-form-section">
+                <h2>Add New Chicken</h2>
+                <form id="add-chicken-form">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="add-name">Product name <span class="required">*</span></label>
+                            <input type="text" id="add-name" required placeholder="e.g. Rhode Island Red Pullet">
+                        </div>
+                        <div class="form-field">
+                            <label for="add-breed">Breed <span class="required">*</span></label>
+                            <input type="text" id="add-breed" required placeholder="e.g. Rhode Island Red">
+                        </div>
+                        <div class="form-field">
+                            <label for="add-age">Age in months <span class="required">*</span></label>
+                            <input type="number" id="add-age" min="1" required placeholder="e.g. 4">
+                        </div>
+                        <div class="form-field">
+                            <label for="add-price">Price (₱) <span class="required">*</span></label>
+                            <input type="number" id="add-price" min="0" step="0.01" required placeholder="e.g. 350">
+                        </div>
+                        <div class="form-field full">
+                            <label for="add-description">Description <span class="required">*</span></label>
+                            <textarea id="add-description" required rows="3" placeholder="Describe the chicken..."></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label for="add-image">Image URL <span class="required">*</span></label>
+                            <input type="text" id="add-image" required placeholder="images/chicken.jpg.png">
+                            <div class="image-preview add-image-preview" style="display:none; margin-top:10px;">
+                                <img id="add-image-preview" src="" alt="Preview" style="max-width:200px; max-height:200px; border-radius:var(--radius); border:1px solid #ddd; object-fit:cover;">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="add-sex">Sex (optional)</label>
+                            <input type="text" id="add-sex" placeholder="e.g. Female">
+                        </div>
+                        <div class="form-field">
+                            <label for="add-weight">Weight (optional)</label>
+                            <input type="text" id="add-weight" placeholder="e.g. 1.8 kg">
+                        </div>
+                        <div class="form-field">
+                            <label for="add-stock">Stock quantity <span class="required">*</span></label>
+                            <input type="number" id="add-stock" min="0" required placeholder="e.g. 12">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Chicken</button>
+                        <button type="button" class="btn" id="cancel-add">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-form-section" id="edit-form-section" style="display: none;">
+                <h2>Edit Chicken</h2>
+                <form id="edit-chicken-form">
+                    <input type="hidden" id="edit-product-id">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="edit-name">Product name <span class="required">*</span></label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-breed">Breed <span class="required">*</span></label>
+                            <input type="text" id="edit-breed" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-age">Age in months <span class="required">*</span></label>
+                            <input type="number" id="edit-age" min="1" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-price">Price (₱) <span class="required">*</span></label>
+                            <input type="number" id="edit-price" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-field full">
+                            <label for="edit-description">Description <span class="required">*</span></label>
+                            <textarea id="edit-description" required rows="3"></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-image">Image URL <span class="required">*</span></label>
+                            <input type="text" id="edit-image" required>
+                            <div class="image-preview edit-image-preview" style="display:none; margin-top:10px;">
+                                <img id="edit-image-preview" src="" alt="Preview" style="max-width:200px; max-height:200px; border-radius:var(--radius); border:1px solid #ddd; object-fit:cover;">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-sex">Sex (optional)</label>
+                            <input type="text" id="edit-sex">
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-weight">Weight (optional)</label>
+                            <input type="text" id="edit-weight">
+                        </div>
+                        <div class="form-field">
+                            <label for="edit-stock">Stock quantity <span class="required">*</span></label>
+                            <input type="number" id="edit-stock" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update Chicken</button>
+                        <button type="button" class="btn btn-outline" id="cancel-edit">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-table-section">
+                <h2>Inventory</h2>
+                <div class="table-wrapper">
+                    <table id="admin-products-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Breed</th>
+                                <th>Age</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body"></tbody>
+                    </table>
+                </div>
+                <p id="admin-empty-table" style="display:none; text-align:center; color:var(--text-muted); padding:20px;">No products in inventory.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span>Fresh Feathers Farm</span>
+                <p>Quality poultry you can trust.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@freshfeathersfarm.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Farm Road, Countryside, ST 12345</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p>Sat: 9:00 AM - 3:00 PM</p>
+                <p>Sun: Closed</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh Feathers Farm. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
